@@ -1,0 +1,9 @@
+:root {
+  --app-bg: #f5f7fb;
+}
+
+body {
+  margin: 0;
+  background: var(--app-bg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
