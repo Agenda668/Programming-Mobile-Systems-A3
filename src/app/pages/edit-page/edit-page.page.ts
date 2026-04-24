@@ -172,7 +172,11 @@ export class EditPagePage implements OnInit {
     private readonly toastController: ToastController,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.inventoryService.getAll().subscribe({
+      error: () => void this.showToast('无法加载库存列表', 'warning'),
+    });
+  }
 
   loadByName(): void {
     const name = this.lookupName.trim();

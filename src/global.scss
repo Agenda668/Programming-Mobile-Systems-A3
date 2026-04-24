@@ -1,9 +1,83 @@
+@import '@ionic/angular/css/core.css';
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
+@import '@ionic/angular/css/display.css';
+
 :root {
   --app-bg: #f5f7fb;
+}
+
+html,
+body,
+ion-app {
+  height: 100%;
 }
 
 body {
   margin: 0;
   background: var(--app-bg);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+ion-app,
+ion-router-outlet,
+ion-tabs {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+ion-tabs {
+  position: relative;
+}
+
+ion-page {
+  position: relative;
+  display: block;
+}
+
+ion-content {
+  --background: transparent;
+}
+
+.page-shell,
+.page-content,
+.app-tabs {
+  width: 100%;
+  height: 100%;
+}
+
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.page-header,
+.app-tab-bar {
+  position: relative;
+  z-index: 2;
+}
+
+.page-content {
+  flex: 1;
+  --background: transparent;
+}
+
+.page-content__inner {
+  min-height: 100%;
+}
+
+.app-tabs {
+  --background: transparent;
+}
+
+.app-tab-bar {
+  --background: rgba(255, 255, 255, 1);
 }

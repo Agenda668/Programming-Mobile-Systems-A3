@@ -7,9 +7,9 @@ import { addOutline, listOutline, createOutline, shieldCheckmarkOutline } from '
   standalone: true,
   imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet],
   template: `
-    <ion-tabs>
+    <ion-tabs class="app-tabs">
       <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom">
+      <ion-tab-bar slot="bottom" class="app-tab-bar" translucent="false">
         <ion-tab-button tab="list" href="/tabs/list">
           <ion-icon [icon]="listOutline"></ion-icon>
           <ion-label>库存列表</ion-label>

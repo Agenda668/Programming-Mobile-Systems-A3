@@ -192,11 +192,18 @@ export class AddPagePage implements OnInit {
   ngOnInit(): void {
     this.loadFeatured();
     this.inventoryService.getAll().subscribe({
-      next: (items) => (this.allNames = new Set(items.map((item) => item.name.toLowerCase()))),
+      next: (items) =>
+        (this.allNames = new Set(
+          items
+            .map((item) => item.name)
+            .filter((name): name is string => !!name)
+            .map((name) => name.toLowerCase()),
+        )),
       error: () => this.showToast('无法读取名称列表，唯一性校验将仅做本地检查。', 'warning'),
     });
     this.form.controls.name.valueChanges.subscribe((value) => {
-      const duplicate = value.trim().length > 0 && this.allNames.has(value.trim().toLowerCase());
+      const normalized = (value ?? '').trim().toLowerCase();
+      const duplicate = normalized.length > 0 && this.allNames.has(normalized);
       if (duplicate) {
         this.form.controls.name.setErrors({ duplicateName: true });
       } else if (this.form.controls.name.hasError('duplicateName')) {

@@ -7,25 +7,31 @@ import { helpCircleOutline } from 'ionicons/icons';
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonContent],
   template: `
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>{{ title() }}</ion-title>
-        <ion-buttons slot="end">
-          <ion-button fill="clear" (click)="showHelp()">
-            <ion-icon [icon]="helpCircleOutline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ng-content></ng-content>
-    </ion-content>
+    <div class="page-shell">
+      <ion-header class="page-header">
+        <ion-toolbar color="primary">
+          <ion-title>{{ title() }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="showHelp()" aria-label="帮助">
+              <ion-icon [icon]="helpCircleOutline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="page-content" fullscreen="true">
+        <div class="page-content__inner ion-padding">
+          <ng-content></ng-content>
+        </div>
+      </ion-content>
+    </div>
   `,
 })
 export class PageShellComponent {
   readonly title = input('');
   readonly helpCircleOutline = helpCircleOutline;
-  showHelp() {
+
+  showHelp(): void {
     alert('请根据页面提示完成库存管理操作。');
   }
 }
