@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "ionic serve",
+    "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint"
   },

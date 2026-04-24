@@ -10,7 +10,6 @@ import {
   IonCardTitle,
   IonChip,
   IonIcon,
-  IonInput,
   IonItem,
   IonLabel,
   IonList,
@@ -98,7 +97,7 @@ import { Category, InventoryItem, StockStatus } from '../../models/inventory.mod
                   </ion-label>
                   <ion-label slot="end">
                     <h3>价格</h3>
-                    <p>${{ item.price }}</p>
+                    <p>$ {{ item.price }}</p>
                   </ion-label>
                 </ion-item>
                 <ion-item lines="none">
