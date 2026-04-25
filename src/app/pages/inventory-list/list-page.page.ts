@@ -70,7 +70,7 @@ export class ListPagePage implements OnInit {
     this.loadItems();
   }
 
-  async loadItems(message = '库存数据已刷新') {
+  async loadItems(message = 'Inventory data refreshed') {
     this.loading = true;
     this.inventoryService.getAll().subscribe({
       next: async (items) => {
@@ -81,7 +81,7 @@ export class ListPagePage implements OnInit {
       },
       error: async () => {
         this.loading = false;
-        await this.presentToast('库存数据加载失败', 'danger');
+        await this.presentToast('Failed to load inventory data', 'danger');
       },
     });
   }

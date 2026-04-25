@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "ng serve",
+    "start": "ionic serve",
     "build": "ng build",
     "lint": "ng lint"
   },
@@ -13,6 +13,9 @@
     "@angular/forms": "^18.2.0",
     "@angular/platform-browser": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@capacitor/android": "^8.3.1",
+    "@capacitor/cli": "^8.3.1",
+    "@capacitor/core": "^8.3.1",
     "@ionic/angular": "^8.2.0",
     "ionicons": "^7.4.0",
     "rxjs": "^7.8.1",
