@@ -6,26 +6,8 @@ import { helpCircleOutline } from 'ionicons/icons';
   selector: 'app-page-shell',
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonContent],
-  template: `
-    <div class="page-shell">
-      <ion-header class="page-header">
-        <ion-toolbar color="primary">
-          <ion-title>{{ title() }}</ion-title>
-          <ion-buttons slot="end">
-            <ion-button fill="clear" (click)="showHelp()" aria-label="帮助">
-              <ion-icon [icon]="helpCircleOutline"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-
-      <ion-content class="page-content" fullscreen="true">
-        <div class="page-content__inner ion-padding">
-          <ng-content></ng-content>
-        </div>
-      </ion-content>
-    </div>
-  `,
+  templateUrl: './page-shell.component.html',
+  styleUrls: ['./page-shell.component.scss'],
 })
 export class PageShellComponent {
   readonly title = input('');

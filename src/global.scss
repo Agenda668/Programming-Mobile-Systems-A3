@@ -23,27 +23,48 @@ body {
   margin: 0;
   background: var(--app-bg);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 
 ion-app,
-ion-router-outlet,
-ion-tabs {
+ion-tabs,
+ion-page {
   display: block;
   width: 100%;
   height: 100%;
 }
 
 ion-tabs {
+  display: flex;
+  flex-direction: column;
   position: relative;
+}
+
+ion-router-outlet {
+  display: block;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+  z-index: 0;
+  pointer-events: auto;
 }
 
 ion-page {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  pointer-events: auto;
 }
 
 ion-content {
   --background: transparent;
+  pointer-events: auto;
+}
+
+ion-content::part(scroll) {
+  pointer-events: auto;
 }
 
 .page-shell,

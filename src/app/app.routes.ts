@@ -12,19 +12,19 @@ export const routes: Routes = [
     children: [
       {
         path: 'list',
-        loadComponent: () => import('./pages/list-page/list-page.page').then((m) => m.ListPagePage),
+        loadComponent: () => import('./pages/inventory-list/list-page.page').then((m) => m.ListPagePage),
       },
       {
         path: 'add',
-        loadComponent: () => import('./pages/add-page/add-page.page').then((m) => m.AddPagePage),
+        loadComponent: () => import('./pages/add-featured/add-page.page').then((m) => m.AddPagePage),
       },
       {
         path: 'edit',
-        loadComponent: () => import('./pages/edit-page/edit-page.page').then((m) => m.EditPagePage),
+        loadComponent: () => import('./pages/edit-delete/edit-page.page').then((m) => m.EditPagePage),
       },
       {
         path: 'privacy',
-        loadComponent: () => import('./pages/privacy-page/privacy-page.page').then((m) => m.PrivacyPagePage),
+        loadComponent: () => import('./pages/privacy-security/privacy-page.page').then((m) => m.PrivacyPagePage),
       },
       {
         path: '',

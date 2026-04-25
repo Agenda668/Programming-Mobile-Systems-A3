@@ -25,10 +25,12 @@ import {
 } from '@ionic/angular/standalone';
 import { PageShellComponent } from '../../components/page-shell.component';
 import {
+  CATEGORY_LABELS,
   CATEGORY_OPTIONS,
   Category,
   InventoryCreatePayload,
   InventoryItem,
+  STOCK_STATUS_LABELS,
   STOCK_STATUS_OPTIONS,
   StockStatus,
 } from '../../models/inventory.model';
@@ -60,114 +62,14 @@ import { InventoryService } from '../../services/inventory.service';
     IonList,
     IonNote,
   ],
-  template: `
-    <app-page-shell title="添加精选">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>新增库存</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <form [formGroup]="form" (ngSubmit)="submit()">
-            <ion-grid>
-              <ion-row>
-                <ion-col size="12">
-                  <ion-item>
-                    <ion-label position="stacked">名称 *</ion-label>
-                    <ion-input formControlName="name" placeholder="请输入唯一商品名称"></ion-input>
-                  </ion-item>
-                  <ion-text color="danger" *ngIf="form.controls.name.touched && form.controls.name.invalid">
-                    <small *ngIf="form.controls.name.errors?.['required']">名称必填</small>
-                    <small *ngIf="form.controls.name.errors?.['duplicateName']">名称已存在</small>
-                  </ion-text>
-                </ion-col>
-
-                <ion-col size="12" sizeMd="6">
-                  <ion-item>
-                    <ion-label position="stacked">分类 *</ion-label>
-                    <ion-select formControlName="category" placeholder="请选择分类">
-                      <ion-select-option *ngFor="let category of categoryOptions" [value]="category">{{ category }}</ion-select-option>
-                    </ion-select>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col size="12" sizeMd="6">
-                  <ion-item>
-                    <ion-label position="stacked">库存状态 *</ion-label>
-                    <ion-select formControlName="status" placeholder="请选择状态">
-                      <ion-select-option *ngFor="let status of stockStatusOptions" [value]="status">{{ status }}</ion-select-option>
-                    </ion-select>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col size="12" sizeMd="6">
-                  <ion-item>
-                    <ion-label position="stacked">数量 *</ion-label>
-                    <ion-input type="number" formControlName="quantity"></ion-input>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col size="12" sizeMd="6">
-                  <ion-item>
-                    <ion-label position="stacked">价格 *</ion-label>
-                    <ion-input type="number" formControlName="price"></ion-input>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col size="12">
-                  <ion-item>
-                    <ion-label position="stacked">供应商 *</ion-label>
-                    <ion-input formControlName="supplier"></ion-input>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col size="12">
-                  <ion-item>
-                    <ion-label>精选商品</ion-label>
-                    <ion-checkbox slot="end" formControlName="featured"></ion-checkbox>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col size="12">
-                  <ion-item>
-                    <ion-label position="stacked">备注</ion-label>
-                    <ion-input formControlName="note" placeholder="可选"></ion-input>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-
-            <ion-button expand="block" type="submit" [disabled]="loading || form.invalid">
-              {{ loading ? '提交中...' : '新增库存' }}
-            </ion-button>
-          </form>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>精选商品</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-list>
-            <ion-item *ngFor="let item of featuredItems">
-              <ion-label>
-                <h3>{{ item.name }}</h3>
-                <p>{{ item.category }} · {{ item.supplier }}</p>
-              </ion-label>
-              <ion-badge color="success">精选</ion-badge>
-            </ion-item>
-            <ion-item *ngIf="!featuredItems.length">
-              <ion-label>当前没有精选商品</ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-card-content>
-      </ion-card>
-    </app-page-shell>
-  `,
+  templateUrl: './add-page.page.html',
+  styleUrls: ['./add-page.page.scss'],
 })
 export class AddPagePage implements OnInit {
   readonly categoryOptions = CATEGORY_OPTIONS;
   readonly stockStatusOptions = STOCK_STATUS_OPTIONS;
+  readonly categoryLabels = CATEGORY_LABELS;
+  readonly stockStatusLabels = STOCK_STATUS_LABELS;
   featuredItems: InventoryItem[] = [];
   loading = false;
   private allNames = new Set<string>();
